@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Deserialize, Serialize)]
 pub struct FontSheetData {
 
-    pub id: usize,
+    pub id: u8,
     pub width: u8,
     pub height: u8,
     pub chars: String,
