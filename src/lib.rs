@@ -1,9 +1,16 @@
 use serde::{Deserialize, Serialize};
 
+pub mod message;
+
+pub type FontId = u8;
+
+pub const FONT_0: &FontId = &0;
+pub const FONT_1: &FontId = &1;
+
 #[derive(Debug, Deserialize, Serialize)]
 pub struct FontSheetData {
 
-    pub id: u8,
+    pub id: FontId,
     pub width: u8,
     pub height: u8,
     pub chars: String,
@@ -41,4 +48,8 @@ pub struct SerializedFonts {
 
     pub fonts: Vec<FontSheet>,
 
+}
+
+pub const fn default_font_id() -> FontId {
+    1
 }

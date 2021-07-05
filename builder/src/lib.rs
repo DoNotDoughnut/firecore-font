@@ -1,8 +1,7 @@
 use std::io::Write;
 use std::path::Path;
 
-use firecore_font_lib::FontSheet;
-use firecore_font_lib::FontSheetFile;
+use firecore_font::{FontSheet, FontSheetFile, SerializedFonts};
 
 pub fn compile<P: AsRef<Path>>(font_folder: P, output_file: P) {
     let font_folder = font_folder.as_ref();
@@ -35,7 +34,7 @@ pub fn compile<P: AsRef<Path>>(font_folder: P, output_file: P) {
     }
     
     println!("Serializing fonts...");
-    let bytes = postcard::to_allocvec(&firecore_font_lib::SerializedFonts { fonts })
+    let bytes = firecore_dependencies::ser::serialize(&SerializedFonts { fonts })
         .unwrap_or_else(|err| panic!("Could not serialize fonts with error {}", err));
 
     println!("Creating and writing to file...");

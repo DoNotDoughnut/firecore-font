@@ -1,6 +1,6 @@
 [package]
 name = "font-builder"
-version = "0.4.0-beta.1"
+version = "0.4.0"
 authors = ["Rhys Holloway <rhyswilliamholloway@gmail.com>"]
 edition = "2018"
 
@@ -10,10 +10,10 @@ edition = "2018"
 
 ### Font specifications
 
-firecore-font-lib = { path = "../" }
+firecore-font = { path = "../font" }
+firecore-dependencies = { path = "../../deps", features = ["ser"] }
 
 ### Serialization
 
 serde = { version = "1.0", features = ["derive"] }
-postcard = { version = "0.6", default-features = false, features = ["alloc"] }
 ron = "0.6"
