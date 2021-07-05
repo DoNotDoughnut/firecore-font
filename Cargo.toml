@@ -3,8 +3,13 @@ name = "firecore-font"
 version = "0.5.0-2021-07-05"
 authors = ["Rhys Holloway <rhyswilliamholloway@gmail.com>"]
 edition = "2018"
+include = ["assets"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = []
+textures = []
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
