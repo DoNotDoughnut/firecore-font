@@ -7,11 +7,6 @@ pub type FontId = u8;
 pub const FONT_0: &FontId = &0;
 pub const FONT_1: &FontId = &1;
 
-#[cfg(feature = "textures")]
-pub static BUTTON_TEXTURE: &[u8] = include_bytes!("../assets/button.png");
-#[cfg(feature = "textures")]
-pub static CURSOR_TEXTURE: &[u8] = include_bytes!("../assets/cursor.png");
-
 #[derive(Debug, Deserialize, Serialize)]
 pub struct FontSheetData {
 
