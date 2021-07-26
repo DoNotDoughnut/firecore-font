@@ -1,14 +1,9 @@
 [package]
-name = "firecore-font"
-version = "0.5.0-2021-07-05"
+name = "firecore-text"
+version = "0.5.0-2021-07-26"
 authors = ["Rhys Holloway <rhyswilliamholloway@gmail.com>"]
 edition = "2018"
-include = ["assets"]
+repository = "https://github.com/DoNotDoughnut/firecore-text"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
-
-[workspace]
-members = [
-    "builder",
-]

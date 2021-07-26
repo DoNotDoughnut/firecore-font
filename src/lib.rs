@@ -1,55 +1,33 @@
 use serde::{Deserialize, Serialize};
 
-pub mod message;
+pub type MessagePages = Vec<MessagePage>;
+pub type Lines = Vec<String>; // maybe use cow<'_ str>
 
-pub type FontId = u8;
+#[derive(Default, Debug, Clone, Deserialize, Serialize)]
+pub struct Message {
+    pub pages: MessagePages,
 
-pub const FONT_0: &FontId = &0;
-pub const FONT_1: &FontId = &1;
-
-#[derive(Debug, Deserialize, Serialize)]
-pub struct FontSheetData {
-
-    pub id: FontId,
-    pub width: u8,
-    pub height: u8,
-    pub chars: String,
-    pub custom: Vec<CustomChar>,
-
+    #[serde(default)]
+    pub color: TextColor,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
-pub struct CustomChar {
-
-    pub id: char,
-    pub width: u8,
-    pub height: Option<u8>,
-
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct MessagePage {
+    pub lines: Lines,
+    pub wait: Option<f32>,
 }
 
-#[derive(Deserialize, Serialize)]
-pub struct FontSheet {
-
-    pub image: Vec<u8>,
-    pub data: FontSheetData,
-
+#[derive(Debug, Copy, Clone, Hash, Deserialize, Serialize)]
+pub enum TextColor {
+    Black,
+    White,
+    Gray,
+    Red,
+    Blue,
 }
 
-#[derive(Deserialize, Serialize)]
-pub struct FontSheetFile {
-
-    pub file: String,
-    pub data: FontSheetData,
-
-}
-
-#[derive(Deserialize, Serialize)]
-pub struct SerializedFonts {
-
-    pub fonts: Vec<FontSheet>,
-
-}
-
-pub const fn default_font_id() -> FontId {
-    1
+impl Default for TextColor {
+    fn default() -> Self {
+        Self::Black
+    }
 }
