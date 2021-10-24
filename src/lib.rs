@@ -1,7 +1,9 @@
+//! Library that inclues structs for pages/messages/lines of text in my game.
+
 use serde::{Deserialize, Serialize};
 
 pub type MessagePages = Vec<MessagePage>;
-pub type Lines = Vec<String>; // maybe use cow<'_ str>
+pub type Lines = Vec<String>;
 
 #[derive(Default, Debug, Clone, Deserialize, Serialize)]
 pub struct Message {
@@ -11,6 +13,7 @@ pub struct Message {
     pub color: TextColor,
 }
 
+///
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct MessagePage {
     pub lines: Lines,
